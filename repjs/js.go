@@ -67,8 +67,9 @@ func dispatch(this js.Value, inputs []js.Value) interface{} {
 
 func main() {
 	c := make(chan bool)
-	js.Global().Set("replicache", map[string]js.Func{
-		"dispatch": js.FuncOf(dispatch),
-	})
+	js.Global().Set("replicache",
+		map[string]interface{}{
+			"dispatch": js.FuncOf(dispatch),
+		})
 	<-c
 }
